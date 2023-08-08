@@ -40,7 +40,6 @@ public class PersonajePrincipalGrafico extends EntidadDinamicaGrafica{
 	
 	public void actualizar(int posX, int posY, int ancho, int alto, int rotacion) {
 		this.rotacion= rotacion;
-		//this.movimiento= (movimiento + 1) % 2;
 		miLabel.setIcon(getImagen());
 		miLabel.setBounds(posX, posY, ancho, alto);
 	}

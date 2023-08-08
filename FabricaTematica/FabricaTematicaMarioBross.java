@@ -12,12 +12,14 @@ public class FabricaTematicaMarioBross implements FabricaTematicasAbstracta {
 	protected Contenedor miContenedor;
 	protected String[] direcciones;
 	protected String[] afectado;
+	protected String[][] animacion;
 	
 	public FabricaTematicaMarioBross(Grilla grilla, Contenedor miContenedor) {
 		miGrilla= grilla;
 		this.miContenedor= miContenedor;
 		direcciones = new String[4];
 		afectado = new String[4];
+		animacion = new String[4][3];
 	}
 	
 	@Override
@@ -90,17 +92,24 @@ public class FabricaTematicaMarioBross implements FabricaTematicasAbstracta {
 
 	@Override
 	public PersonajePrincipal crearPersonajePrincipal(int posX, int posY) {
-		direcciones[0] = "/images/Mario.png";
-		direcciones[1] = "/images/MarioAbajo.png";
-		direcciones[2] = "/images/MarioIzquierda.png";
-		direcciones[3] = "/images/MarioArriba.png";
+
+		animacion[0][0] = "/images/MarioDer1.png";
+		animacion[0][1] = "/images/MarioDer2.png";
+		animacion[0][2] = "/images/MarioDer3.png";
 		
-		afectado[0] = "/images/MarioVelocidad.png";
-		afectado[1] = "/images/MarioAbajoVelocidad.png";
-		afectado[2] = "/images/MarioIzquierdaVelocidad.png";
-		afectado[3] = "/images/MarioArribaVelocidad.png";
+		animacion[1][0] = "/images/MarioAba1.png";
+		animacion[1][1] = "/images/MarioAba2.png";
+		animacion[1][2] = "/images/MarioAba3.png";
 		
-		EntidadDinamicaGrafica personajePrincipalGrafico = new PersonajePrincipalGrafico(miContenedor, direcciones, afectado);
+		animacion[2][0] = "/images/MarioIzq1.png";
+		animacion[2][1] = "/images/MarioIzq2.png";
+		animacion[2][2] = "/images/MarioIzq3.png";
+		
+		animacion[3][0] = "/images/MarioArr1.png";
+		animacion[3][1] = "/images/MarioArr2.png";
+		animacion[3][2] = "/images/MarioArr3.png";
+
+		EntidadDinamicaGrafica personajePrincipalGrafico = new PersonajePrincipalGraficoAnimado(miContenedor, animacion);
 		PersonajePrincipal personajePrincipal = new PersonajePrincipal(posX, posY, personajePrincipalGrafico, miGrilla);
 		return personajePrincipal;
 	}

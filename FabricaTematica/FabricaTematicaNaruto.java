@@ -37,12 +37,14 @@ public class FabricaTematicaNaruto implements FabricaTematicasAbstracta{
 	protected Contenedor miContenedor;
 	protected String[] direcciones;
 	protected String[] afectado;
+	protected String[][] animacion;
 	
 	public FabricaTematicaNaruto(Grilla grilla, Contenedor miContenedor) {
 		miGrilla= grilla;
 		this.miContenedor= miContenedor;
 		direcciones = new String[4];
 		afectado = new String[4];
+		animacion = new String[4][8];
 	}
 	
 	@Override
@@ -115,7 +117,44 @@ public class FabricaTematicaNaruto implements FabricaTematicasAbstracta{
 
 	@Override
 	public PersonajePrincipal crearPersonajePrincipal(int posX, int posY) {
-		EntidadDinamicaGrafica personajePrincipalGrafico = new PersonajePrincipalGraficoAnimado(miContenedor);
+	
+		animacion[0][0]= "/images/narutoder1.png";
+		animacion[0][1]= "/images/narutoder2.png";
+		animacion[0][2]= "/images/narutoder3.png";
+		animacion[0][3]= "/images/narutoder4.png";
+		animacion[0][4]= "/images/narutoder5.png";
+		animacion[0][5]= "/images/narutoder6.png";
+		animacion[0][6]= "/images/narutoder7.png";
+		animacion[0][7]= "/images/narutoder8.png";
+		
+		animacion[1][0]= "/images/narutoaba1.png";
+		animacion[1][1]= "/images/narutoaba2.png";
+		animacion[1][2]= "/images/narutoaba3.png";
+		animacion[1][3]= "/images/narutoaba4.png";
+		animacion[1][4]= "/images/narutoaba5.png";
+		animacion[1][5]= "/images/narutoaba6.png";
+		animacion[1][6]= "/images/narutoaba7.png";
+		animacion[1][7]= "/images/narutoaba8.png";
+
+		animacion[2][0]= "/images/narutoizq1.png";
+		animacion[2][1]= "/images/narutoizq2.png";
+		animacion[2][2]= "/images/narutoizq3.png";
+		animacion[2][3]= "/images/narutoizq4.png";
+		animacion[2][4]= "/images/narutoizq5.png";
+		animacion[2][5]= "/images/narutoizq6.png";
+		animacion[2][6]= "/images/narutoizq7.png";
+		animacion[2][7]= "/images/narutoizq8.png";
+
+		animacion[3][0]= "/images/narutoarr1.png";
+		animacion[3][1]= "/images/narutoarr2.png";
+		animacion[3][2]= "/images/narutoarr3.png";
+		animacion[3][3]= "/images/narutoarr4.png";
+		animacion[3][4]= "/images/narutoarr5.png";
+		animacion[3][5]= "/images/narutoarr6.png";
+		animacion[3][6]= "/images/narutoarr7.png";
+		animacion[3][7]= "/images/narutoarr8.png";
+
+		EntidadDinamicaGrafica personajePrincipalGrafico = new PersonajePrincipalGraficoAnimado(miContenedor, animacion);
 		PersonajePrincipal personajePrincipal = new PersonajePrincipal(posX, posY, personajePrincipalGrafico, miGrilla);
 		return personajePrincipal;
 	}

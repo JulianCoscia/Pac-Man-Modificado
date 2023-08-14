@@ -448,7 +448,7 @@ public class NivelTres extends Nivel {
 		miGrilla.getZonas(3, 0).agregarEntidad(miFabrica.crearPacDots(32*3 + 7, 32*18 + 7));
 		miGrilla.getZonas(3, 0).agregarEntidad(miFabrica.crearPacDots(32*4 + 7, 32*16 + 7));
 		miGrilla.getZonas(3, 0).agregarEntidad(miFabrica.crearPacDots(32*4 + 7, 32*18 + 7));
-		miGrilla.sumarCantPacDot(9);
+		miGrilla.sumarCantPacDot(10);
 		
 		//____Zona 14____
 		miGrilla.getZonas(3, 1).agregarEntidad(miFabrica.crearPacDots(32*5 + 7, 32*15 + 7));

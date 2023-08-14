@@ -18,5 +18,5 @@ public interface FabricaTematicasAbstracta {
 	public PocionVelocidad crearPocionVelocidad(int posX,int posY);
 	public PocionBombas crearPocionBombas(int posX,int posY);
 	public Explosion crearExplosion(int posX,int posY);
-
+	public String musicaNivel(int lvl);
 }

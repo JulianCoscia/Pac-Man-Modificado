@@ -11,7 +11,7 @@ public class PersonajePrincipal extends EntidadDinamica {
 	protected int velocidad;
 	protected int PosicionCasaX;
 	protected int PosicionCasaY;
-	protected static final int velocidadInicial= 3;
+	protected static final int velocidadInicial= 5;//era 3
 	
 	
 	public PersonajePrincipal (int posX, int posY, EntidadDinamicaGrafica representacionPP, Grilla grilla) {

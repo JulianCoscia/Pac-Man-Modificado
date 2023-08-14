@@ -8,7 +8,6 @@ import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
-import javax.swing.ImageIcon;
 
 import FabricaTematica.FabricaTematicaMarioBross;
 import FabricaTematica.FabricaTematicaNaruto;
@@ -48,7 +47,7 @@ public class Juego {
 		puntaje = 0;
 		musica=new Musica();
 		correrMusica();
-		cantidadVidas = 15;
+		cantidadVidas = 30;
 	}
 	
 	public int getSegundoActual() {
@@ -118,6 +117,10 @@ public class Juego {
 		}
 	}
 	
+	public int cantPacDotRestantes() {
+		return cantPacDot;
+	}
+	
 	private void resetearContenedor () {
 		if (miGrilla.getNivel().getNumeroNivel() != 3) {
 			miRelojEnemigo.setStep(1000);
@@ -127,6 +130,9 @@ public class Juego {
 			miRelojEnemigo.setStep(20);
 			miContenedor.iniciarNuevoContenedor();
 		}
+		else {
+			finalizarJuegoExitoso();
+		}
 	}
 
 	public void temporizador(double tiempo) {
@@ -134,7 +140,7 @@ public class Juego {
 	}
 
 	public void resetearVelocidadPP() {
-		miGrilla.resetearVelocidadPP();
+		miGrilla.resetearVelocidadPersonajePrincipal();
 	}
 	
 	public void cambiarEnemigosAPerseguir() {
@@ -153,26 +159,15 @@ public class Juego {
 	}
 	
 	public void correrMusica() {
-		int numeroDeNivel = 0;
-		numeroDeNivel=miGrilla.getNivel().getNumeroNivel();
+		int nivelNro;
+		nivelNro = miGrilla.getNivel().getNumeroNivel();
+		
 		try{
-		 AudioInputStream inputStream = AudioSystem.getAudioInputStream(
-		          this.getClass().getResourceAsStream("/Sonido/CancionNivelUnoMario.wav"));
-		switch (numeroDeNivel) {
-		case 1:
-			inputStream = AudioSystem.getAudioInputStream(
-			          this.getClass().getResourceAsStream("/Sonido/CancionNivelUnoMario.wav"));
-			break;
-		case 2:
-			 inputStream = AudioSystem.getAudioInputStream(
-			          this.getClass().getResourceAsStream("/Sonido/CancionNivelDosMario.wav"));
-			break;
-		case 3:
-			inputStream = AudioSystem.getAudioInputStream(
-			          this.getClass().getResourceAsStream("/Sonido/CancionNivelTresMario.wav"));
-			break;
-		}
+		 AudioInputStream inputStream = null;
 
+		inputStream = AudioSystem.getAudioInputStream(this.getClass().getResourceAsStream(miFabrica.musicaNivel(nivelNro)));
+				
+		musica = new Musica();
 		musica.abrir(inputStream);
 		musica.iniciar();
 		musica.repetirInfinitamente();
@@ -182,9 +177,13 @@ public class Juego {
 		}
 		
 	}
+	
+	public void detenerMusica() {
+		musica.detener();
+	}
 
 	public void finalizarJuegoExitoso() {
-		miVentana.mostrarCartel(getPuntaje(), miCronometro.getSegundosTranscurridos(), 1 );
+		miVentana.mostrarCartel(getPuntaje(), miCronometro.getSegundosTranscurridos(), 1 ); 
 	}
 
 	public void detenerJuego() {

@@ -175,4 +175,19 @@ public class FabricaTematicaMarioBross implements FabricaTematicasAbstracta {
 		Explosion explosion = new Explosion (x, y, explosionGrafica, miGrilla);
 		return explosion;
 	}
+	
+	public String musicaNivel(int lvl) {
+		String salida = "";
+		
+		switch(lvl) {
+			case 1: salida = "/Sonido/CancionNivelUnoMario.wav";
+					break;
+			case 2: salida = "/Sonido/CancionNivelDosMario.wav";
+					break;
+			case 3: salida = "/Sonido/CancionNivelTresMario.wav";
+					break;
+		}
+		
+		return salida;
+	}
 }

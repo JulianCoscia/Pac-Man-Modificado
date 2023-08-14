@@ -17,13 +17,14 @@ public class VisitorPersonajePrincipal implements Visitor{
 	}
 
 	@Override
-	public void visit(Enemigo e) {//Enemigo.getEstado.Visitar()
+	public void visit(Enemigo e) {
 		e.getEstado().visitar();
 	}
 
 	@Override
 	public void visit(Pared e) {
-		e.acomodarEntidad(0); // 0 significa que lo choco el personaje principal
+		// 0 significa que lo choco el personaje principal
+		e.acomodarEntidad(0); 
 	}
 
 	@Override

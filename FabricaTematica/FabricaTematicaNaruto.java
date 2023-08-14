@@ -220,4 +220,19 @@ public class FabricaTematicaNaruto implements FabricaTematicasAbstracta{
 		Explosion explosion = new Explosion(x, y, explosionGrafica,miGrilla);
 		return explosion;
 	}
+	
+	public String musicaNivel(int lvl) {
+		String salida = "";
+		
+		switch(lvl) {
+			case 1: salida = "/Sonido/CancionNivelUnoNaruto.wav";
+					break;
+			case 2: salida = "/Sonido/CancionNivelDosNaruto.wav";
+					break;
+			case 3: salida = "/Sonido/CancionNivelTresNaruto.wav";
+					break;
+		}
+		
+		return salida;
+	}
 }

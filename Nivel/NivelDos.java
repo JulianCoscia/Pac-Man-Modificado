@@ -510,7 +510,7 @@ public class NivelDos extends Nivel {
 		miGrilla.getZonas(3, 0).agregarEntidad(miFabrica.crearPowerPellets(32, 32*18));
 		
 		//____Zona 16____
-		miGrilla.getZonas(3, 0).agregarEntidad(miFabrica.crearPowerPellets(32*18, 32*18));
+		miGrilla.getZonas(3, 3).agregarEntidad(miFabrica.crearPowerPellets(32*18, 32*18));
 	}
 
 	protected void construirPociones() {

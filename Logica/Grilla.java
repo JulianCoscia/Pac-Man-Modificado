@@ -2,8 +2,6 @@ package Logica;
 
 import java.util.LinkedList;
 
-import javax.swing.ImageIcon;
-
 import Entidades.Enemigo;
 import Entidades.Entidad;
 import Entidades.EntidadDinamica;
@@ -43,19 +41,21 @@ public class Grilla {
 	//____Metodos____
 	public void asignarFabrica(FabricaTematicasAbstracta fabrica) {
 		miFabrica= fabrica;
-		nivelActual= new NivelUno (this, miFabrica);
+		nivelActual= new NivelUno (this, miFabrica); 
 	}
 	
+
 	public void cambiarNivel() {
 		switch (nivelActual.getNumeroNivel()) {
 		case 1:
 			nivelActual= new NivelDos (this, miFabrica);
+			miJuego.detenerMusica();
+			miJuego.correrMusica();
 			break;
 		case 2:
 			nivelActual= new NivelTres (this, miFabrica);
-			break;
-		case 3:
-			miJuego.finalizarJuegoExitoso();
+			miJuego.detenerMusica();
+			miJuego.correrMusica();
 			break;
 		}
 	}
@@ -125,7 +125,7 @@ public class Grilla {
         }
 	}
 
-	public void resetearVelocidadPP() {
+	public void resetearVelocidadPersonajePrincipal() {
 		personajePrincipal.resetearVelocidad();
 		personajePrincipal.activarCambioDeEstadoGrafico(0);
 	}
@@ -141,10 +141,6 @@ public class Grilla {
 		listaBombas.addLast(e);
 	}
 	
-	/*
-	 * Habia problemas para recorrer y remover entidades en una misma lista
-	 * Clono la lista, recorro la lista clonada y modifico la original
-	 */
 	public void activarBombas() {
 		LinkedList<Explosion> clon = new LinkedList<Explosion>(listaBombas);
 		

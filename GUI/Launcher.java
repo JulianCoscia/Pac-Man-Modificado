@@ -11,8 +11,8 @@ public class Launcher {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					GUI frame = new GUI();
-					frame.setVisible(true);
+					VentanaInicial ventana = new VentanaInicial();
+					ventana.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}

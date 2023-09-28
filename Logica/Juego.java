@@ -15,6 +15,8 @@ import FabricaTematica.FabricaTematicasAbstracta;
 import GUI.Contenedor;
 import GUI.GUI;
 import Musica.Musica;
+import Puntajes.GestorDePuntajes;
+import Puntajes.Jugador;
 
 public class Juego {
 
@@ -29,6 +31,7 @@ public class Juego {
 	protected Musica musica;
 	protected int cantidadVidas;
 	protected FabricaTematicasAbstracta miFabrica;
+	GestorDePuntajes puntajes;
 	
 	public Juego (GUI ventana, Contenedor contenedorJuego, int fabrica) {
 		miVentana= ventana;
@@ -48,6 +51,7 @@ public class Juego {
 		musica=new Musica();
 		correrMusica();
 		cantidadVidas = 30;
+		puntajes = new GestorDePuntajes();
 	}
 	
 	public int getSegundoActual() {
@@ -57,10 +61,10 @@ public class Juego {
 	private FabricaTematicasAbstracta crearFabrica(int fabrica) {
 		FabricaTematicasAbstracta salida = null;
 		switch(fabrica) {
-		case 0:
+		case 1:
 			salida =  new FabricaTematicaMarioBross(miGrilla, miContenedor);
 			break;
-		case 1:
+		case 2:
 			salida =  new FabricaTematicaNaruto(miGrilla, miContenedor);
 			break;
 		}
@@ -154,7 +158,7 @@ public class Juego {
 	public void restarUnaVida() {
 		cantidadVidas--;
 		if (cantidadVidas <= 0) {
-			miVentana.mostrarCartel(getPuntaje(), miCronometro.getSegundosTranscurridos(), 0 );
+			miVentana.mostrarMensajeFinDeJuego(getPuntaje(), miCronometro.getSegundosTranscurridos(), 0 );
 		}
 	}
 	
@@ -183,7 +187,7 @@ public class Juego {
 	}
 
 	public void finalizarJuegoExitoso() {
-		miVentana.mostrarCartel(getPuntaje(), miCronometro.getSegundosTranscurridos(), 1 ); 
+		miVentana.mostrarMensajeFinDeJuego(getPuntaje(), miCronometro.getSegundosTranscurridos(), 1 ); 
 	}
 
 	public void detenerJuego() {
@@ -192,4 +196,16 @@ public class Juego {
 		miCronometro.detener();
 	}
 
+	public String[] getPuntajeMaximo() {
+		String[] arr = new String[2];
+		Jugador jugador = puntajes.jugadorConMayorPuntajeActual();
+		arr[0] = jugador.getNombre();
+		arr[1] = jugador.getPuntaje()+"";
+		return arr;
+	}
+	
+	public void guardarNuevoPuntaje(String nombre) {
+		Jugador nuevo = new Jugador(nombre, puntaje, miCronometro.getSegundosTranscurridos());
+		puntajes.guardarPuntaje(nuevo);
+	}
 }

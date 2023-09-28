@@ -1,0 +1,6 @@
+Julian,12010,210
+Julian,7870,135
+Brian,2340,37
+Brian,9360,232
+Manu,9610,218
+Julian,12510,187

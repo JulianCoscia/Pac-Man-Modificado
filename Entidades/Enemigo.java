@@ -43,9 +43,10 @@ public abstract class Enemigo extends EntidadDinamica{
 		int rotacionAux= rotacion;
 		int pixelesAvanzados= 0;
 		boolean puedeDoblar = false;
+		
+		//Comprueba en cada caso si es posible mover hacia el sentido deseado
 		switch (sentidoDeseado) {
 		case DERECHA:
-			//Tengo que comprobar que si es posible mover hacia el sentido deseado
 			if (posX + ancho - 1 + velocidad <= ancho*20) {
 				while (pixelesAvanzados< velocidad && !puedeDoblar) {
 					if (movimientoLibre(sentidoDeseado)) {
@@ -60,7 +61,6 @@ public abstract class Enemigo extends EntidadDinamica{
 			}
 			break;
 		case ABAJO:
-			//Tengo que comprobar que si es posible mover hacia el sentido deseado
 			if (posY + alto - 1 + velocidad <= ancho*20)
 				while (pixelesAvanzados< velocidad && !puedeDoblar) {
 					if (movimientoLibre(sentidoDeseado)) {
@@ -74,7 +74,6 @@ public abstract class Enemigo extends EntidadDinamica{
 				}
 			break;
 		case IZQUIERDA:
-			//Tengo que comprobar que si es posible mover hacia el sentido deseado
 			if (posX - velocidad >= 0)
 				while (pixelesAvanzados< velocidad && !puedeDoblar) {
 					if (movimientoLibre(sentidoDeseado)) {
@@ -88,7 +87,6 @@ public abstract class Enemigo extends EntidadDinamica{
 				}
 			break;
 		case ARRIBA:
-			//Tengo que comprobar que si es posible mover hacia el sentido deseado
 			if (posY - velocidad >= 0)
 				while (pixelesAvanzados< velocidad && !puedeDoblar) {
 					if (movimientoLibre(sentidoDeseado)) {

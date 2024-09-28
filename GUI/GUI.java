@@ -6,13 +6,17 @@ import java.awt.Color;
 import java.awt.Font;
 
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JSlider;
 import javax.swing.SwingConstants;
 import javax.swing.Timer;
 import javax.swing.border.EmptyBorder;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 
 import Logica.Juego;
 
@@ -78,12 +82,22 @@ public class GUI extends JFrame {
 	    String[] highScore = miJuego.getPuntajeMaximo();
 	    nombreHighScore.setText(highScore[0]);
 	    puntajeHighScore.setText(highScore[1]);
-        
-		JLabel background = new JLabel("");
+	    
+	    JLabel background = new JLabel("");
 		background.setIcon(new ImageIcon(GUI.class.getResource("/images/Background.png")));
 		background.setBounds(0, 0, 800, 679);
 		contentPane.add(background);
 		contentPane.repaint();
+	    
+	    //Volumen
+	  /*  JSlider slider = new JSlider();
+		slider.addChangeListener(new ChangeListener() {
+			public void stateChanged(ChangeEvent e) {
+				miJuego.setVolumen(slider.getValue());
+			}
+		});
+		slider.setBounds(660, 620, 100, 20);
+		contentPane.add(slider);*/
 	}
 	
 	

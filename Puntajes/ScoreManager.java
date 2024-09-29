@@ -90,7 +90,7 @@ public class ScoreManager {
     /**
      * Retrieves the highest score from the file.
      * The highest score is assumed to be the first entry in the file if it is sorted.
-     * @return A Player object representing the player with the highest score, or null if the file is empty.
+     * @return A Player object representing the player with the highest score, or a player called Player with 0 points.
      */
     public Player getHighestScore() {
         try (BufferedReader reader = Files.newBufferedReader(FILE_PATH)) {
@@ -105,6 +105,7 @@ public class ScoreManager {
         } catch (IOException e) {
             System.err.println("Error reading the file: " + e.getMessage());
         }
-        return null;
+        
+        return new Player("Player", 0, 0);
     }
 }
